@@ -7,7 +7,7 @@ import { Payment } from './payment.model';
   providedIn: 'root'
 })
 export class PaymentService {
-  readonly endpoint = 'http://localhost:5000/api/PaymentDetail';
+  endpoint:string = 'https://angular-be-yew.herokuapp.com/api/PaymentDetail';
 
   constructor(private http: HttpClient) { }
 

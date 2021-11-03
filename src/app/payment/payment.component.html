@@ -17,12 +17,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of paymentList"(click) = "onEditForm(item)">
-                    <td >{{item.cardOwnerName}}</td>
-                    <td >{{item.cardNumber}}</td>
-                    <td >{{item.expirationDate}}</td>
+                <tr *ngFor="let item of paymentList">
+                    <td (click) = "onEditForm(item)">{{item.cardOwnerName}}</td>
+                    <td (click) = "onEditForm(item)">{{item.cardNumber}}</td>
+                    <td (click) = "onEditForm(item)">{{item.expirationDate}}</td>
                     <td>
-                        <i class="far fa-trash-alt fa-lg text-danger"></i>
+                        <i class="far fa-trash-alt fa-lg text-danger" (click) = "deleteData(item)"></i>
                     </td>
                 </tr>
             </tbody>
