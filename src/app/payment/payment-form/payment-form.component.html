@@ -1,0 +1,87 @@
+<form [formGroup]="form.formData">
+  <input type="hidden" name="paymentDetailId" formControlName="paymentDetailId" id="paymentDetailId" class="form-control" />
+  <div class="form-group">
+    <label>CARD OWNER NAME</label>
+    <input
+      required
+      type="text"
+      class="form-control form-control-lg"
+      placeholder="Full Name"
+      name="cardOwnerName"
+      id="cardOwnerName"
+      formControlName="cardOwnerName"
+    />
+    <small
+      style="color: red"
+      class="small-class form-text"
+      *ngIf="CardOwnerName && CardOwnerName.touched && CardOwnerName.invalid"
+    >
+      Minimun inputted is 4 characters
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>CARD NUMBER</label>
+    <input
+      type="text"
+      class="form-control form-control-lg"
+      placeholder="16 Digit Card Number"
+      name="cardNumber"
+      required
+      id="cardNumber"
+      formControlName="cardNumber"
+    />
+    <small
+      style="color: red"
+      class="small-class form-text"
+      *ngIf="CardNumber && CardNumber.touched && CardNumber.invalid"
+    >
+      Input Must 16 Card Number
+    </small>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>SECURITY CODE</label>
+      <input
+        type="password"
+        class="form-control form-control-lg"
+        placeholder="Security Code"
+        name="securityCode"
+        formControlName="securityCode"
+        required
+        id="securityCode"
+      />
+      <small
+        style="color: red"
+        class="small-class form-text"
+        *ngIf="SecurityCode && SecurityCode.touched && SecurityCode.invalid"
+      >
+        Exactly 3 Characters Numbers
+      </small>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>VALIDE THROUGH</label>
+      <input
+      type="text"
+        class="form-control form-control-lg"
+        placeholder="MM/YY"
+        name="expirationDate"
+        formControlName = "expirationDate"
+        required
+        id="expirationDate"
+      />
+      <small
+        style="color: red"
+        class="small-class form-text"
+        *ngIf="ExpirationDate && ExpirationDate.touched && ExpirationDate.invalid"
+      >
+        format input must be MM/YY
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-info btn-lg btn-block" type="submit" (click)="dataModif()">SUBMIT</button>
+  </div>
+</form>
