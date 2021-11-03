@@ -89,44 +89,51 @@ export class PaymentFormComponent implements OnInit {
 
   dataModif() {
     if (this.editBool == false) {
-      this.dataObj = this.form.formData.value;
-      this.dataObj.paymentDetailId = 0;
-      this.paymentService.addData(this.dataObj).subscribe(
-        (res) => {
-          this.toastr.success(
-            'Data Payment Added Successfully',
-            'Payment Detail Register'
-          );
-          this.form.formData.reset();
-          this.payment.ngOnInit();
-          
-        },
-        (err) => {
-          console.log(this.dataObj);
-          this.toastr.error('Something Went Wrong', 'Error!');
-        }
-      );
+      this.addData();
     }
     else{
-      this.dataEdit = this.form.formData.value;
-      this.paymentService.updateData(this.dataEdit,this.dataEdit.paymentDetailId).subscribe(
-        (res) => {
-          this.toastr.success(
-            'Data Payment Edited Successfully',
-            'Edit Payment Detail'
-          );
-          this.form.formData.reset();
-          this.payment.ngOnInit();
-          this.editBool = false;
-        },
-        (err) => {
-          console.log(this.dataObj)
-          this.toastr.error('Something Went Wrong', 'Error!');
-        }
-      );
+      this.updateData();
     }
   }
 
+  addData() {
+    this.dataObj = this.form.formData.value;
+    this.dataObj.paymentDetailId = 0;
+    this.paymentService.addData(this.dataObj).subscribe(
+      (res) => {
+        this.toastr.success(
+          'Data Payment Added Successfully',
+          'Payment Detail Register'
+        );
+        this.form.formData.reset();
+        this.payment.ngOnInit();
+        
+      },
+      (err) => {
+        console.log(this.dataObj);
+        this.toastr.error('Something Went Wrong', 'Error!');
+      }
+    );
+  }
+
+  updateData() {
+    this.dataEdit = this.form.formData.value;
+    this.paymentService.updateData(this.dataEdit,this.dataEdit.paymentDetailId).subscribe(
+      (res) => {
+        this.toastr.success(
+          'Data Payment Edited Successfully',
+          'Edit Payment Detail'
+        );
+        this.form.formData.reset();
+        this.payment.ngOnInit();
+        this.editBool = false;
+      },
+      (err) => {
+        console.log(this.dataObj)
+        this.toastr.error('Something Went Wrong', 'Error!');
+      }
+    );
+  }
 
   
 }
