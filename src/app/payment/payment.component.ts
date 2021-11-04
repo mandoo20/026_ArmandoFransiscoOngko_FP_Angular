@@ -11,7 +11,7 @@ import { PaymentService } from '../shared/payment.service';
 export class PaymentComponent implements OnInit {
 
   payment_id!: number;
-  paymentObj!: Payment;
+  paymentObj: Payment = {} as Payment;
   paymentList : Payment[] = [];
 
   passItem: Payment={} as Payment;
@@ -33,13 +33,21 @@ export class PaymentComponent implements OnInit {
     this.passItem = data;
   }
 
-  deleteData(data: Payment) {
-    this.paymentService.deleteData(data.paymentDetailId).subscribe((res) => {
+  deleteData() {
+    this.paymentService.deleteData(this.paymentObj.paymentDetailId).subscribe((res) => {
       this.toastr.success(
         'Data Payment Deleted Successfully',
         'Payment Detail Delete'
       );
+      let c = document.getElementById('cancelDelete');
+        c?.click();
       this.getAllData();
     });
+  }
+
+  dataDel(data: Payment) {
+    this.paymentObj.paymentDetailId = data.paymentDetailId ;
+    this.paymentObj.cardOwnerName = data.cardOwnerName  ;
+
   }
 }

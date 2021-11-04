@@ -27,19 +27,16 @@ export class PaymentFormComponent implements OnInit {
       cardNumber: new FormControl('', [
         Validators.required,
         Validators.minLength(16),
-        Validators.maxLength(16),
         Validators.pattern(/^[0-9]+$/),
       ]),
       expirationDate: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(5),
         Validators.pattern(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/),
       ]),
       securityCode: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(3),
         Validators.pattern(/^[0-9]+$/),
       ]),
     }),
